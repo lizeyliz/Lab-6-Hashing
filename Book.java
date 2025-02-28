@@ -1,0 +1,1 @@
+//object class: template for book object
