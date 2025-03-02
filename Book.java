@@ -5,6 +5,7 @@ class Book {
     private String author;
     //take number off of internet (easier) OR create method to determine
     private double dewey; //dewey decimal number of book;
+    private int key; //key for book
 
     //dewey number
     // 1)first 3 digits are subject area (shelved in numerical order)
@@ -15,6 +16,7 @@ class Book {
         this.title = title;
         this.author = author;
         this.dewey = dewey;
+        this.key = key; //key is first digit of dewey number
     }
 
     //getters and setters
@@ -35,6 +37,12 @@ class Book {
     }
     public void setDewey(double dewey) {
         this.dewey = dewey;
+    }
+    public int getKey() {
+        return key;
+    }
+    public void setKey(int key) {
+        this.key = key;
     }
     //end getters and setters
 
