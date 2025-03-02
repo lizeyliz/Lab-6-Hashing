@@ -37,4 +37,10 @@ class Book {
         this.dewey = dewey;
     }
     //end getters and setters
+
+    //toString method
+    @Override
+    public String toString() {
+        return title + " by " + author + " (Dewey: " + dewey + ")";
+    }
 }//end class Book
