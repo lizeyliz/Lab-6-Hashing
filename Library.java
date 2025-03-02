@@ -87,5 +87,38 @@ public class Library {
         }//end try/catch
     } //end addFromFile method
 
+    //user menu
+    public void menu() {
+        Scanner input = new Scanner(System.in);
+        int choice = 0;
+        while (choice != 4) {
+            System.out.println("1) Add a book to the library");
+            System.out.println("2) Remove a book from the library");
+            System.out.println("3) Display all books in the library");
+            System.out.println("4) Display books in a subject area");
+            System.out.println("5) Exit");
+            System.out.print("Enter your choice: ");
+            choice = input.nextInt();
+            switch (choice) {
+                case 1:
+                    //add book
+                    break;
+                case 2:
+                    //remove book
+                    break;
+                case 3:
+                    //display all books
+                    break;
+                case 4:
+                    //display books in a subject
+                    //ask for subject area (list of all subject areas)
+                    //shelf subsections?
+                    //display all books in that shelf
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }//end switch statement
+        }//end while loop
+    }//end menu method
     
-}
+}//end class Library
