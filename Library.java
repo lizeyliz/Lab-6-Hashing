@@ -1,5 +1,3 @@
-//library of books and all related methods
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -8,9 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-
+//library of books and all related methods
 public class Library {
-    //INITIALIZE HASH MAP: each spot is a list
+    //INITIALIZE HASH MAP: each spot is a list (subject area shelf)
     //set as private later?
     public static HashMap<Integer, List<Book>> bookMap = new HashMap<>();
 
@@ -24,7 +22,6 @@ public class Library {
                 myWriter.write("Title: " + entry.getValue()+ "\n" + 
                 "Author: " + entry.getValue() + "\n" + 
                 "Dewey #: " + entry.getValue());
-
             }
             
             myWriter.close();
@@ -44,7 +41,7 @@ public class Library {
             String line = null;
 
             //initialize variables to store contact info
-            String bookTtitle = null;
+            String bookTitle = null;
             String bookAuthor = null;
             String dewey = null;
 
@@ -56,7 +53,7 @@ public class Library {
                 line = reader.nextLine();
                 if (line.contains(beforeString)) {
                     String data = line.substring(line.indexOf(beforeString) + beforeString.length());
-                    bookTtitle = data;
+                    bookTitle = data;
                 }//end if statement
 
                 //read book author
@@ -82,10 +79,7 @@ public class Library {
                 System.out.println();
 
                 //create node to add to tree
-                Book newBook = new Book(bookTtitle, bookAuthor, Double.parseDouble(dewey));
-                //DatabaseNode newNode = new DatabaseNode(idNum, firstName, lastName, address, city, state, zip, email, phNum);
-                //add it to tree
-                //root = addNode(root, newNode);
+                Book newBook = new Book(bookTitle, bookAuthor, Double.parseDouble(dewey));
             }//end while loop
             reader.close();
         } catch (FileNotFoundException e) {
