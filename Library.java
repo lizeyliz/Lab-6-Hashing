@@ -112,7 +112,7 @@ public class Library {
     }//END ADD BOOK
 
     //adds a book to the library using 
-    public Book userCreateBook(Scanner input) {
+    public Book createBook(Scanner input) {
         //ask user for book info
         System.out.println("Enter Book Ttile: ");
         String title = input.nextLine();
@@ -120,17 +120,16 @@ public class Library {
         String author = input.nextLine();
         System.out.println("Enter Dewey #: ");
         int dewey = input.nextInt();
-        input.nextLine(); // Consume newline left-ove
+        input.nextLine(); // Consume newline left-over
 
         return new Book(title, author, dewey);
-    }
+    }//end createBook
 
+    //adds book to library from user input
     public void addUserBook(Scanner input) {
-        //add book to the library
-        Book newBook = userCreateBook(input); //get user input to create a new book
-       // bookMap.put(newBook.getDewey(), newBook); //add book to the library
-        
-    }
+        Book newBook = createBook(input); //get user input to create a new book
+        addBook(newBook);
+    }//end addUserBook
 
     //user menu
     public void menu() {
