@@ -16,7 +16,7 @@ class Book {
         this.title = title;
         this.author = author;
         this.dewey = dewey;
-        this.key = key; //key is first digit of dewey number
+        this.key = (int)dewey/100; //key is first digit of dewey number
     }
 
     //getters and setters
