@@ -38,13 +38,13 @@ public class Main {
         //library.put(book2.getKey(), book2.toString());
         //library.put(book3.getKey(), book3.toString());
 
-        addBook(book1, library);
+        //addBook(book1, library);
 
         System.out.println(library);
     }//end main method
 
     //ADD BOOK: adds a book to a linked list in the hashmap
-    public void addBook(Book book, HashMap<Integer, List<Book>> library){
+    /*public void addBook(Book book, HashMap<Integer, List<Book>> library){
         //traverse hashmap and place based on key
         for (Map.Entry<Integer,List<Book>> mapElement : library.entrySet()) {
             //int key = mapElement.getKey();
@@ -53,6 +53,6 @@ public class Main {
                 System.out.println("Howdy");
             }
         }//end for loop
-    }//END ADD BOOK
+    }//END ADD BOOK*/
 }//end class Main
 
