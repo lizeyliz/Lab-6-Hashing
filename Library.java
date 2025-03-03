@@ -5,8 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class Library {
+
+    HashMap<Double, Book> bookMap = new HashMap<Double, Book>();
 
     //puts all contact nodes from the tree into the txt file
     public void writeToFile(){
@@ -87,6 +90,27 @@ public class Library {
         }//end try/catch
     } //end addFromFile method
 
+    //adds a book to the library using 
+    public Book userCreateBook(Scanner input) {
+        //ask user for book info
+        System.out.println("Enter Book Ttile: ");
+        String title = input.nextLine();
+        System.out.println("Enter Book Author: ");
+        String author = input.nextLine();
+        System.out.println("Enter Dewey #: ");
+        int dewey = input.nextInt();
+        input.nextLine(); // Consume newline left-ove
+
+        return new Book(title, author, dewey);
+    }
+
+    public void addBook(Scanner input) {
+        //add book to the library
+        Book newBook = userCreateBook(input); //get user input to create a new book
+        bookMap.put(newBook.getDewey(), newBook); //add book to the library
+        
+    }
+
     //user menu
     public void menu() {
         Scanner input = new Scanner(System.in);
@@ -102,6 +126,7 @@ public class Library {
             switch (choice) {
                 case 1:
                     //add book
+                    addBook(input);
                     break;
                 case 2:
                     //remove book
