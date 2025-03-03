@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 
@@ -93,6 +94,23 @@ public class Library {
         }//end try/catch
     } //end addFromFile method
 
+    //ADD BOOK: adds a book to a linked list in the hashmap
+    public static void addBook(Book book, HashMap<Integer, List<Book>> library){
+        int key = book.getKey();//first digit of book's dewey decimal number
+        //check if library contains key
+        if(library.containsKey(key)){
+            // Get the ArrayList associated with the key 
+            List<Book> list = library.get(key); 
+            // Add the book's string value to the ArrayList 
+            list.add(book); 
+        } else { //if the book's key doesn't have an ArrayList in the map
+            // If the key does not exist, create a new ArrayList, add the element, and put it in the library(map) 
+            List<Book> newList = new ArrayList<>(); 
+            newList.add(book); 
+            library.put(key, newList); 
+        } //end if/else
+    }//END ADD BOOK
+
     //adds a book to the library using 
     public Book userCreateBook(Scanner input) {
         //ask user for book info
@@ -107,7 +125,7 @@ public class Library {
         return new Book(title, author, dewey);
     }
 
-    public void addBook(Scanner input) {
+    public void addUserBook(Scanner input) {
         //add book to the library
         Book newBook = userCreateBook(input); //get user input to create a new book
        // bookMap.put(newBook.getDewey(), newBook); //add book to the library
@@ -130,7 +148,7 @@ public class Library {
             switch (choice) {
                 case 1:
                     //add book
-                    addBook(input);
+                    addUserBook(input);
                     break;
                 case 2:
                     //remove book
