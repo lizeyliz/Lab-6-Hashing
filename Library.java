@@ -4,15 +4,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Library {
-
-    HashMap<Double, ArrayList<Book>> bookMap = new HashMap<Double, ArrayList<Book>>();
+    //INITIALIZE HASH MAP: each spot is a list
+    //set as private later?
+    public static HashMap<Integer, List<Book>> bookMap = new HashMap<>();
 
     //puts all contact nodes from the tree into the txt file
     public void writeToFile(){
@@ -20,7 +20,7 @@ public class Library {
         try { //FIXXXXX
             FileWriter myWriter = new FileWriter("Library.txt");
             //write all contacts into file
-            for (HashMap.Entry<Double, ArrayList<Book>> entry : bookMap.entrySet()) {  
+            for (HashMap.Entry<Integer, List<Book>> entry : bookMap.entrySet()) {  
                 myWriter.write("Title: " + entry.getValue()+ "\n" + 
                 "Author: " + entry.getValue() + "\n" + 
                 "Dewey #: " + entry.getValue());
@@ -95,19 +95,19 @@ public class Library {
     } //end addFromFile method
 
     //ADD BOOK: adds a book to a linked list in the hashmap
-    public static void addBook(Book book, HashMap<Integer, List<Book>> library){
+    public static void addBook(Book book){
         int key = book.getKey();//first digit of book's dewey decimal number
         //check if library contains key
-        if(library.containsKey(key)){
+        if(bookMap.containsKey(key)){
             // Get the ArrayList associated with the key 
-            List<Book> list = library.get(key); 
+            List<Book> list = bookMap.get(key); 
             // Add the book's string value to the ArrayList 
             list.add(book); 
         } else { //if the book's key doesn't have an ArrayList in the map
             // If the key does not exist, create a new ArrayList, add the element, and put it in the library(map) 
             List<Book> newList = new ArrayList<>(); 
             newList.add(book); 
-            library.put(key, newList); 
+            bookMap.put(key, newList); 
         } //end if/else
     }//END ADD BOOK
 
