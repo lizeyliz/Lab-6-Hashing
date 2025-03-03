@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ArrayList;
 
 public class Library {
@@ -15,15 +16,16 @@ public class Library {
     //puts all contact nodes from the tree into the txt file
     public void writeToFile(){
         //put contact nodes from tree into array (inorder)
-        Book[] bookList = inorderArray(root); //CHANGE
-        try {
+        try { //FIXXXXX
             FileWriter myWriter = new FileWriter("Library.txt");
             //write all contacts into file
-            for (int i = 0; i < bookList.length; i++) {
-                myWriter.write("Title: " + bookList[i].getTitle() + "\n" + 
-                "Author: " + bookList[i].getAuthor() + "\n" + 
-                "Dewey #: " + bookList[i].getDewey());
-            }//end for loop
+            for (HashMap.Entry<Double, ArrayList<Book>> entry : bookMap.entrySet()) {  
+                myWriter.write("Title: " + entry.getValue()+ "\n" + 
+                "Author: " + entry.getValue() + "\n" + 
+                "Dewey #: " + entry.getValue());
+
+            }
+            
             myWriter.close();
             System.out.println("Succesfully written into the file.");
         } catch (IOException e) {
@@ -119,9 +121,10 @@ public class Library {
         while (choice != 4) {
             System.out.println("1) Add a book to the library");
             System.out.println("2) Remove a book from the library");
-            System.out.println("3) Display all books in the library");
-            System.out.println("4) Display books in a subject area");
-            System.out.println("5) Exit");
+            System.out.println("3) Look up a book ");
+            System.out.println("4) Display all books in the library");
+            System.out.println("5) Display books in a subject area");
+            System.out.println("6) Exit");
             System.out.print("Enter your choice: ");
             choice = input.nextInt();
             switch (choice) {
@@ -133,15 +136,18 @@ public class Library {
                     //remove book
                     break;
                 case 3:
-                    //display all books
+                    //look up book
                     break;
                 case 4:
+                    //display all books
+                    break;
+                case 5:
                     //display books in a subject
                     //ask for subject area (list of all subject areas)
                     //shelf subsections?
                     //display all books in that shelf
                     break;
-                case 5:
+                case 6:
                     //exit
                     System.out.println("Exiting...");
                     System.exit(0);
@@ -150,6 +156,7 @@ public class Library {
                     System.out.println("Invalid choice. Please try again.");
             }//end switch statement
         }//end while loop
+        input.close();
     }//end menu method
     
 }//end class Library
