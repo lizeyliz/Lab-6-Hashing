@@ -6,10 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Library {
 
-    HashMap<Double, Book> bookMap = new HashMap<Double, Book>();
+    HashMap<Double, ArrayList<Book>> bookMap = new HashMap<Double, ArrayList<Book>>();
 
     //puts all contact nodes from the tree into the txt file
     public void writeToFile(){
@@ -107,7 +108,7 @@ public class Library {
     public void addBook(Scanner input) {
         //add book to the library
         Book newBook = userCreateBook(input); //get user input to create a new book
-        bookMap.put(newBook.getDewey(), newBook); //add book to the library
+       // bookMap.put(newBook.getDewey(), newBook); //add book to the library
         
     }
 
@@ -139,6 +140,11 @@ public class Library {
                     //ask for subject area (list of all subject areas)
                     //shelf subsections?
                     //display all books in that shelf
+                    break;
+                case 5:
+                    //exit
+                    System.out.println("Exiting...");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
