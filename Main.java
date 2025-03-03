@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 public class Main {
     // Create a HashMap object called library
     // The key is the first digit of book's dewey #
@@ -12,47 +11,40 @@ public class Main {
         //INITIALIZE HASH MAP (empty)
         //hashmaps where each spot is list
         HashMap<Integer, List<Book>> library = new HashMap<>();
-        
-        //add empty arraylists to each spot in library
-        for (int i = 0; i < 10; i++) {
-            library.put(i, new ArrayList<Book>());
-        }
         //END INITIALIZE HASHMAP
-
-
-        //ADD BOOK
-        //traverse hashmap and place based on key
-        for (Map.Entry<Integer,List<Book>> mapElement : library.entrySet()) {
-            int key = mapElement.getKey();
-            System.out.println(key);
-        }
-        //END ADD BOOK
 
 
 
         Book book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 813.52);
         Book book2 = new Book("To Kill a Mockingbird", "Harper Lee", 813.54);
-        Book book3 = new Book("1984", "George Orwell", 813.54);
+        Book book3 = new Book("1984", "George Orwell", 823.912);
+        Book book4 = new Book("Test book", "me", 732.12);
 
-        //library.put(book1.getKey(), book1.toString());
-        //library.put(book2.getKey(), book2.toString());
-        //library.put(book3.getKey(), book3.toString());
+        addBook(book1, library);
+        addBook(book2, library);
+        addBook(book3, library);
+        addBook(book4, library);
 
         //addBook(book1, library);
-
+        System.out.println("Print Library:");
         System.out.println(library);
     }//end main method
 
     //ADD BOOK: adds a book to a linked list in the hashmap
-    /*public void addBook(Book book, HashMap<Integer, List<Book>> library){
-        //traverse hashmap and place based on key
-        for (Map.Entry<Integer,List<Book>> mapElement : library.entrySet()) {
-            //int key = mapElement.getKey();
-            //System.out.println(key);
-            if (mapElement.getKey() == 2|| mapElement.getKey() == 7){
-                System.out.println("Howdy");
-            }
-        }//end for loop
-    }//END ADD BOOK*/
+    public static void addBook(Book book, HashMap<Integer, List<Book>> library){
+        int key = book.getKey();
+        //check if library contains key
+        if(library.containsKey(key)){
+            // Get the ArrayList associated with the key 
+            List<Book> list = library.get(key); 
+            // Add the book's string value to the ArrayList 
+            list.add(book); 
+        } else { //if the book's key doesn't have an ArrayList in the map
+            // If the key does not exist, create a new ArrayList, add the element, and put it in the library(map) 
+            List<Book> newList = new ArrayList<>(); 
+            newList.add(book); 
+            library.put(key, newList); 
+        } //end if/else
+    }//END ADD BOOK
 }//end class Main
 
