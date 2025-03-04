@@ -141,7 +141,7 @@ public class Library {
                 List<Book> list = bookMap.get(key);
                 System.out.println();
                 for (Book book : list) {//traverse the list at key index
-                    System.out.println(book.toString());
+                    System.out.println("\t" + book.toString());
                     System.out.println();
                 }//end for loop
             }//end if
