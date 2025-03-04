@@ -3,6 +3,7 @@
 public class Main {
     public static void main(String[] args) {
         Library library = new Library();
+        SarahMethods methods = new SarahMethods();
 
         Book book5 = new Book("The Odyssey", "Homer", 883.01 );
         Book book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 813.52);
@@ -22,6 +23,7 @@ public class Main {
         library.displayLibrary();
 
         library.displayShelf();
+        methods.lookupBook();
     }//end main method
 }//end class Main
 
