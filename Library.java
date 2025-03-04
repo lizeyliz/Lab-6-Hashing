@@ -3,11 +3,10 @@ import java.util.*;
 //library of books and all related methods
 public class Library {
     //INITIALIZE HASH MAP: each spot is a list (subject area shelf)
-    //set as private later?
-    public static HashMap<Integer, List<Book>> bookMap = new HashMap<>();
+    static HashMap<Integer, List<Book>> bookMap = new HashMap<>();
     //create comparator object
-    public static Comparator myComparator = new CompareBooks();
-
+    static Comparator myComparator = new CompareBooks();
+    
     //puts all contact nodes from the tree into the txt file
     public void writeToFile(){
         //put contact nodes from tree into array (inorder)
@@ -91,10 +90,8 @@ public class Library {
         if(bookMap.containsKey(key)){
             // Get the ArrayList associated with the key 
             List<Book> list = bookMap.get(key); 
-            // Add the book's string value to the ArrayList 
-            list.add(book); 
-            //list.sort();//sort the list
-            Collections.sort(list, myComparator);
+            list.add(book); //add the book to the list at that index
+            Collections.sort(list, myComparator);//sort the list
         } else { //if the book's key doesn't have an ArrayList in the map
             // If the key does not exist, create a new ArrayList, add the element, and put it in the library(map) 
             List<Book> newList = new ArrayList<>(); 
