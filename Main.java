@@ -1,7 +1,5 @@
 //test class
 
-import java.util.Comparator;
-
 public class Main {
     public static void main(String[] args) {
         Library library = new Library();
@@ -18,6 +16,8 @@ public class Main {
         library.addBook(book5);
         library.addBook(book2);
         library.addBook(book4);
+
+        library.removeBook(book1);//remove the great gatsby
 
         library.displayLibrary();
     }//end main method

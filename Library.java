@@ -6,6 +6,8 @@ public class Library {
     HashMap<Integer, List<Book>> bookMap = new HashMap<>();
     //create comparator object
     Comparator myComparator = new CompareBooks();
+    //initialize scanner
+    Scanner input = new Scanner(System.in);
     
     //puts all contact nodes from the tree into the txt file
     public void writeToFile(){
@@ -120,6 +122,21 @@ public class Library {
         addBook(newBook);
     }//end addUserBook
 
+    //removes a book from the library
+    public void removeBook(Book book) {
+        int key = book.getKey();
+        //get to subject area book is in
+        List<Book> list = bookMap.get(key); 
+        //remove the book
+        list.remove(book);
+    }//end remove book
+
+    public void userRemoveBook(Scanner input){
+        System.out.println("Which book would you like to remove?");
+        //list books
+        int bookInt = input.nextInt();
+    }
+
     //print all books in library, organize by subject area
     void displayLibrary() {
         for(int key = 0; key < 10; key++){//go through all subject areas (1-9)
@@ -154,7 +171,6 @@ public class Library {
 
     //user menu
     public void menu() {
-        Scanner input = new Scanner(System.in);
         int choice = 0;
         while (choice != 4) {
             System.out.println("1) Add a book to the library");
@@ -178,6 +194,7 @@ public class Library {
                     break;
                 case 4:
                     //display all books
+                    displayLibrary();
                     break;
                 case 5:
                     //display books in a subject
