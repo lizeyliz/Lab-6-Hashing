@@ -6,11 +6,12 @@ public class Main {
     public static void main(String[] args) {
         Library library = new Library();
 
-        Book book5 = new Book("Big Book", "me", 890.90);
+        Book book5 = new Book("The Odyssey", "Homer", 883.01 );
         Book book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 813.52);
         Book book2 = new Book("To Kill a Mockingbird", "Harper Lee", 813.54);
         Book book3 = new Book("1984", "George Orwell", 823.912);
-        Book book4 = new Book("Test book", "me", 732.12);
+        Book book4 = new Book("The C Programming Language", " Brian W. Kernighan", 005);
+        
 
         library.addBook(book3);
         library.addBook(book1);
