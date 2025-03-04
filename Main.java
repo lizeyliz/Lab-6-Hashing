@@ -22,9 +22,10 @@ public class Main {
         //library.removeBook(book1);
         //library.userRemoveBook(input);823.
         //remove book
-        Book userBook = library.getUserBook(input);
-        library.removeBook(userBook);
+        //Book userBook = library.getUserBook(input);
+        //library.removeBook(userBook);
         library.displayLibrary();
+        library.writeToFile();
 
         //library.displayShelf();
         //methods.lookupBook();

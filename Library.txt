@@ -1,39 +1,17 @@
-000 - Computer Science, Information, & General Works  
+000 - Computer Science, Information, & General Works
+	The C Programming Language by  Brian W. Kernighan (Dewey: 5.0)
 
-Title: The C Programming Language
-Author: Brian W. Kernighan
-Dewey #: 005
-
-100 - Philosophy & Psychology  
-
-200 - Religion    
-
-300 - Social Sciences  
-
-400 - Language 
-
+100 - Philosophy & Psychology
+200 - Religion
+300 - Social Sciences
+400 - Language
 500 - Science
-
 600 - Technology
-
 700 - Arts & Recreation
-
 800 - Literature
-
-Title: The Great Gatsby
-Author: F. Scott Fitzgerald
-Dewey #: 813.52
-
-Title: To Kill a Mockingbird
-Author: Harper Lee
-Dewey #: 813.54
-
-Title: 1984
-Author: Harper Lee
-Dewey #: 823.912
-
-Title: The Odyssey
-Author: Homer
-Dewey #: 883.01
+	The Great Gatsby by F. Scott Fitzgerald (Dewey: 813.52)
+	To Kill a Mockingbird by Harper Lee (Dewey: 813.54)
+	1984 by George Orwell (Dewey: 823.912)
+	The Odyssey by Homer (Dewey: 883.01)
 
 900 - History & Geography

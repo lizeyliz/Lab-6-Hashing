@@ -9,18 +9,35 @@ public class Library {
     //initialize scanner
     Scanner input = new Scanner(System.in);
     
-    //puts all contact nodes from the tree into the txt file
+    //write library into a file
     public void writeToFile(){
-        //put contact nodes from tree into array (inorder)
-        try { //FIXXXXX
+        try {
             FileWriter myWriter = new FileWriter("Library.txt");
-            //write all contacts into file
-            for (HashMap.Entry<Integer, List<Book>> entry : bookMap.entrySet()) {  
-                myWriter.write("Title: " + entry.getValue()+ "\n" + 
-                "Author: " + entry.getValue() + "\n" + 
-                "Dewey #: " + entry.getValue());
-            }
-            
+            for(int key = 0; key < 10; key++){//go through all subject areas (1-9)
+                //print subject area
+                switch (key){
+                    case 0 -> myWriter.write("000 - Computer Science, Information, & General Works");
+                    case 1 -> myWriter.write("100 - Philosophy & Psychology");
+                    case 2 -> myWriter.write("200 - Religion");
+                    case 3 -> myWriter.write("300 - Social Sciences");
+                    case 4 -> myWriter.write("400 - Language");
+                    case 5 -> myWriter.write("500 - Science");
+                    case 6 -> myWriter.write("600 - Technology");
+                    case 7 -> myWriter.write("700 - Arts & Recreation");
+                    case 8 -> myWriter.write("800 - Literature");
+                    case 9 -> myWriter.write("900 - History & Geography");
+                }//end switch/case
+                //print books in subject area if there is books at that key index
+                if (bookMap.containsKey(key)) {
+                    List<Book> list = bookMap.get(key);
+                    myWriter.write("\n");
+                    for (Book book : list) {//traverse the list at key index
+                        myWriter.write("\t" + book.toString());
+                        myWriter.write("\n");
+                    }//end for loop
+                }//end if
+                myWriter.write("\n");
+            }//end for loop
             myWriter.close();
             System.out.println("Succesfully written into the file.");
         } catch (IOException e) {
@@ -154,7 +171,7 @@ public class Library {
                 if (bookMap.containsKey(key)){
                     List<Book> list = bookMap.get(key);//list is the shelf it's in
                     Iterator<Book> it = list.iterator();
-                    while(it.hasNext()){
+                    while(it.hasNext()){//iterate through values in list
                         book = it.next();
                         if(book.getDewey() == dewey){
                             return book;
@@ -227,7 +244,6 @@ public class Library {
         }//end if   
     }//end displayShelf
     
-
     //user menu
     public void menu() {
         int choice = 0;
