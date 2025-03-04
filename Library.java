@@ -1,16 +1,12 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 //library of books and all related methods
 public class Library {
     //INITIALIZE HASH MAP: each spot is a list (subject area shelf)
     //set as private later?
     public static HashMap<Integer, List<Book>> bookMap = new HashMap<>();
+    //create comparator object
+    public static Comparator myComparator = new CompareBooks();
 
     //puts all contact nodes from the tree into the txt file
     public void writeToFile(){
@@ -97,6 +93,8 @@ public class Library {
             List<Book> list = bookMap.get(key); 
             // Add the book's string value to the ArrayList 
             list.add(book); 
+            //list.sort();//sort the list
+            Collections.sort(list, myComparator);
         } else { //if the book's key doesn't have an ArrayList in the map
             // If the key does not exist, create a new ArrayList, add the element, and put it in the library(map) 
             List<Book> newList = new ArrayList<>(); 
