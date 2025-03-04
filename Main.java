@@ -19,12 +19,15 @@ public class Main {
         library.addBook(book4);
 
         Scanner input = new Scanner(System.in);
-        library.userRemoveBook(input);
-
+        //library.removeBook(book1);
+        //library.userRemoveBook(input);823.
+        //remove book
+        Book userBook = library.getUserBook(input);
+        library.removeBook(userBook);
         library.displayLibrary();
 
-        library.displayShelf();
-        methods.lookupBook();
+        //library.displayShelf();
+        //methods.lookupBook();
     }//end main method
 }//end class Main
 

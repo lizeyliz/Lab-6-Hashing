@@ -127,28 +127,44 @@ public class Library {
         int key = book.getKey();
         //get to subject area book is in
         List<Book> list = bookMap.get(key); 
-        //remove the book
-        list.remove(book);
+        // Get the iterator
+        Iterator<Book> it = list.iterator();
+        while(it.hasNext()){//iteratate through books in list
+            if(it.next() == book) {
+                it.remove(); //remove book
+                System.out.println(book.toString() + " has been removed.");
+                return;//exit method if book has been removed
+            }//end if 
+        }//end while loop
+        System.out.println("Book not found.");
     }//end remove book
 
-    //uses user input to decide which book to remove (NEED TO USE ITERATOR TO MODIFY ARRAYLIST)
-    public void userRemoveBook(Scanner input){
+    //gets book from user input
+    Book getUserBook (Scanner input) {
+        Book book = null;
         displayLibrary();
-        //user chooses book they want to remove by dewey #
-        System.out.println("Enter dewey decimal number of book you would like to remove: ");
-        double dewey = input.nextDouble();
-        //search for book by it's dewey decimal number
-        int key = (int)dewey/100;//key shows which shelf it's in
-        List<Book> list = bookMap.get(key);//list is the shelf it's in
-        for(Book book: list){//traverse shelf
-            if(book.getDewey() == dewey){//remove book
-                removeBook(book);
-                System.out.println(book.toString() +" has been removed.");
-            }//end if
-        }//end for loop
-        //book not found
-        System.out.println("Book not found.");
-    }//end userRemoveBook
+        //loop until they enter correct input
+        while(true){
+            //user chooses book they want to remove by dewey #
+            System.out.println("Enter dewey decimal number of book you would like to remove: ");
+            double dewey = input.nextDouble();
+            //search for book by it's dewey decimal number
+            int key = (int)dewey/100;//key shows which shelf it's in
+            if (bookMap.containsKey(key)){
+                List<Book> list = bookMap.get(key);//list is the shelf it's in
+                Iterator<Book> it = list.iterator();
+                while(it.hasNext()){
+                    book = it.next();
+                    if(book.getDewey() == dewey){
+                        return book;
+                    }//end if
+                }//end while loop
+                System.out.println("Book not found.");
+            } else {
+                System.out.println("No books in this shelf");
+            }//end if/else
+        }//end outer while loop
+    }//end getUserBook
 
     //print all books in library, organize by subject area
     void displayLibrary() {
@@ -226,6 +242,8 @@ public class Library {
                     break;
                 case 2:
                     //remove book
+                    Book userBook = getUserBook(input);
+                    removeBook(userBook);
                     break;
                 case 3:
                     //look up book
