@@ -120,6 +120,38 @@ public class Library {
         addBook(newBook);
     }//end addUserBook
 
+    //print all books in library, organize by subject area
+    void displayLibrary() {
+        for(int key = 0; key < 10; key++){//go through all subject areas (1-9)
+            //print subject area
+            switch (key){
+                case 0 -> System.out.println("000 - Computer Science, Information, & General Works");
+                case 1 -> System.out.println("100 - Philosophy & Psychology");
+                case 2 -> System.out.println("200 - Religion");
+                case 3 -> System.out.println("300 - Social Sciences");
+                case 4 -> System.out.println("400 - Language");
+                case 5 -> System.out.println("500 - Science");
+                case 6 -> System.out.println("600 - Technology");
+                case 7 -> System.out.println("700 - Arts & Recreation");
+                case 8 -> System.out.println("800 - Literature");
+                case 9 -> System.out.println("900 - History & Geography");
+            }//end switch/case
+            //print books in subject area if there is books at that key index
+            if (bookMap.containsKey(key)) {
+                List<Book> list = bookMap.get(key);
+                System.out.println();
+                for (Book book : list) {//traverse the list at key index
+                    System.out.println(book.toString());
+                    System.out.println();
+                }//end for loop
+            }//end if
+            System.out.println();
+        }//end for loop
+    
+
+
+    }//end display library
+
     //user menu
     public void menu() {
         Scanner input = new Scanner(System.in);

@@ -19,8 +19,7 @@ public class Main {
         library.addBook(book2);
         library.addBook(book4);
 
-        System.out.println("Print Library:");
-        System.out.println(library.bookMap);
+        library.displayLibrary();
     }//end main method
 }//end class Main
 
