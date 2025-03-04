@@ -143,27 +143,32 @@ public class Library {
     Book getUserBook (Scanner input) {
         Book book = null;
         displayLibrary();
-        //loop until they enter correct input
+        //loop until correct input is entered to find a book
         while(true){
-            //user chooses book they want to remove by dewey #
-            System.out.println("Enter dewey decimal number of book you would like to remove: ");
-            double dewey = input.nextDouble();
-            //search for book by it's dewey decimal number
-            int key = (int)dewey/100;//key shows which shelf it's in
-            if (bookMap.containsKey(key)){
-                List<Book> list = bookMap.get(key);//list is the shelf it's in
-                Iterator<Book> it = list.iterator();
-                while(it.hasNext()){
-                    book = it.next();
-                    if(book.getDewey() == dewey){
-                        return book;
-                    }//end if
-                }//end while loop
-                System.out.println("Book not found.");
-            } else {
-                System.out.println("No books in this shelf");
-            }//end if/else
-        }//end outer while loop
+            try {
+                //user chooses book they want to remove by dewey #
+                System.out.println("Enter dewey decimal number of book you would like to remove: ");
+                double dewey = input.nextDouble();
+                //search for book by it's dewey decimal number
+                int key = (int)dewey/100;//key shows which shelf it's in
+                if (bookMap.containsKey(key)){
+                    List<Book> list = bookMap.get(key);//list is the shelf it's in
+                    Iterator<Book> it = list.iterator();
+                    while(it.hasNext()){
+                        book = it.next();
+                        if(book.getDewey() == dewey){
+                            return book;
+                        }//end if
+                    }//end while loop
+                    System.out.println("Book not found.");
+                } else {
+                    System.out.println("No books in this shelf");
+                }//end if/else
+            } catch(InputMismatchException e){
+                System.out.println("Enter a number");
+                input.next(); // Clear the invalid input
+            }//end try/catch
+        }//end while true
     }//end getUserBook
 
     //print all books in library, organize by subject area
