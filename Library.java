@@ -3,9 +3,9 @@ import java.util.*;
 //library of books and all related methods
 public class Library {
     //INITIALIZE HASH MAP: each spot is a list (subject area shelf)
-    static HashMap<Integer, List<Book>> bookMap = new HashMap<>();
+    HashMap<Integer, List<Book>> bookMap = new HashMap<>();
     //create comparator object
-    static Comparator myComparator = new CompareBooks();
+    Comparator myComparator = new CompareBooks();
     
     //puts all contact nodes from the tree into the txt file
     public void writeToFile(){
@@ -84,7 +84,7 @@ public class Library {
     } //end addFromFile method
 
     //ADD BOOK: adds a book to a linked list in the hashmap
-    public static void addBook(Book book){
+    public void addBook(Book book){
         int key = book.getKey();//first digit of book's dewey decimal number
         //check if library contains key
         if(bookMap.containsKey(key)){
