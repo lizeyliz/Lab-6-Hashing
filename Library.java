@@ -131,11 +131,24 @@ public class Library {
         list.remove(book);
     }//end remove book
 
+    //uses user input to decide which book to remove (NEED TO USE ITERATOR TO MODIFY ARRAYLIST)
     public void userRemoveBook(Scanner input){
-        System.out.println("Which book would you like to remove?");
-        //list books
-        int bookInt = input.nextInt();
-    }
+        displayLibrary();
+        //user chooses book they want to remove by dewey #
+        System.out.println("Enter dewey decimal number of book you would like to remove: ");
+        double dewey = input.nextDouble();
+        //search for book by it's dewey decimal number
+        int key = (int)dewey/100;//key shows which shelf it's in
+        List<Book> list = bookMap.get(key);//list is the shelf it's in
+        for(Book book: list){//traverse shelf
+            if(book.getDewey() == dewey){//remove book
+                removeBook(book);
+                System.out.println(book.toString() +" has been removed.");
+            }//end if
+        }//end for loop
+        //book not found
+        System.out.println("Book not found.");
+    }//end userRemoveBook
 
     //print all books in library, organize by subject area
     void displayLibrary() {
@@ -164,9 +177,6 @@ public class Library {
             }//end if
             System.out.println();
         }//end for loop
-    
-
-
     }//end display library
 
     public void displayShelf() {
@@ -193,9 +203,8 @@ public class Library {
                 System.out.println("\t" + book.toString());
                 System.out.println();
             }//end for loop
-        }//end if
-        
-    }
+        }//end if   
+    }//end displayShelf
     
 
     //user menu
@@ -243,5 +252,4 @@ public class Library {
         }//end while loop
         input.close();
     }//end menu method
-    
 }//end class Library

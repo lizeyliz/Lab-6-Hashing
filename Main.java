@@ -1,5 +1,5 @@
 //test class
-
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Library library = new Library();
@@ -18,7 +18,8 @@ public class Main {
         library.addBook(book2);
         library.addBook(book4);
 
-        library.removeBook(book1);//remove the great gatsby
+        Scanner input = new Scanner(System.in);
+        library.userRemoveBook(input);
 
         library.displayLibrary();
 
