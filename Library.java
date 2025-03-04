@@ -169,6 +169,35 @@ public class Library {
 
     }//end display library
 
+    public void displayShelf() {
+        Scanner input = new Scanner(System.in);
+    
+        System.out.println("Choice which shelf to display:");
+        System.out.println("0. Computer Science, Information, & General Works\n"+ 
+                "1. Philosophy & Psychology\n" +
+                "2. Religion\n" +
+                "3. Social Sciences\n" +
+                "4. Language\n" +
+                "5. Science\n" +
+                "6. Technology\n" +
+                "7. Arts & Recreation\n" +
+                "8. Literature\n" +
+                "9. History & Geography");
+        
+        int choice = input.nextInt();
+
+        if (bookMap.containsKey(choice)) {
+            List<Book> list = bookMap.get(choice);
+            System.out.println();
+            for (Book book : list) {//traverse the list at key index
+                System.out.println("\t" + book.toString());
+                System.out.println();
+            }//end for loop
+        }//end if
+        
+    }
+    
+
     //user menu
     public void menu() {
         int choice = 0;
@@ -201,6 +230,7 @@ public class Library {
                     //ask for subject area (list of all subject areas)
                     //shelf subsections?
                     //display all books in that shelf
+                    displayShelf();
                     break;
                 case 6:
                     //exit

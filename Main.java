@@ -20,6 +20,8 @@ public class Main {
         library.removeBook(book1);//remove the great gatsby
 
         library.displayLibrary();
+
+        library.displayShelf();
     }//end main method
 }//end class Main
 
