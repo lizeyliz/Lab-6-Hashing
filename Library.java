@@ -57,7 +57,7 @@ public class Library {
             //initialize variables to store contact info
             String bookTitle = null;
             String bookAuthor = null;
-            Double dewey = null;
+            String dewey = null;
 
             //read until end of file and get contact info
             while(reader.hasNextLine()) {
@@ -81,11 +81,11 @@ public class Library {
                             count += 1;
                         } 
                         else if(count == 3) { //third line - number
-                            String data = part.substring(7, part.length());
-                            data = data.trim();
+                            dewey = part.substring(7, part.length());
+                            dewey = dewey.trim();
 
-                            Book newBook = new Book(bookTitle, bookAuthor, Double.parseDouble(data));
-                            System.out.println(newBook.toString());
+                            Book newBook = new Book(bookTitle, bookAuthor, Double.parseDouble(dewey));
+                            addBook(newBook);
                             count = 1; //resets to 1
 
                         } 
@@ -120,11 +120,12 @@ public class Library {
     public Book createBook(Scanner input) {
         //ask user for book info
         System.out.println("Enter Book Ttile: ");
+        input.nextLine();
         String title = input.nextLine();
         System.out.println("Enter Book Author: ");
         String author = input.nextLine();
         System.out.println("Enter Dewey #: ");
-        int dewey = input.nextInt();
+        double dewey = input.nextDouble();
         input.nextLine(); // Consume newline left-over
 
         return new Book(title, author, dewey);
@@ -301,8 +302,9 @@ public class Library {
     
     //user menu
     public void menu() {
+        ReadFromFile();
         int choice = 0;
-        while (choice != 4) {
+        while (choice != 7) {
             System.out.println("1) Add a book to the library");
             System.out.println("2) Remove a book from the library");
             System.out.println("3) Look up a book ");
@@ -330,10 +332,7 @@ public class Library {
                     displayLibrary();
                     break;
                 case 5:
-                    //display books in a subject
-                    //ask for subject area (list of all subject areas)
-                    //shelf subsections?
-                    //display all books in that shelf
+                    //display books on a specfic shelf
                     displayShelf();
                     break;
                 case 6:
