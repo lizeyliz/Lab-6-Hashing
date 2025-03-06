@@ -217,6 +217,64 @@ public class Library {
         }//end for loop
     }//end display library
 
+    public void lookupBook() {
+        //prompt user for dewey decimal number
+        //get user input
+        Book newBook = null;
+        boolean bookFound = false;
+
+        //print a list of the avalibe dewey numbers
+        System.out.println();
+        System.out.println("List of all Dewey Numbers in the Library:\n");
+        for(int key = 0; key < 10; key++){//go through all subject areas (1-9)
+            if (bookMap.containsKey(key)) {
+                List<Book> list = bookMap.get(key);
+                
+                for (Book book : list) {//traverse the list at key index
+                    System.out.println("\t" + book.getDewey());
+                    System.out.println();
+                }//end for loop
+            }
+        }
+
+        //loop until correct input is entered to find a book
+        while(true){
+            try {
+                //user chooses book they want to remove by dewey #
+                System.out.println("Enter dewey decimal number of book you would like to look up: ");
+                double dewey = input.nextDouble();
+                //search for book by it's dewey decimal number
+                int key = (int)dewey/100;//key shows which shelf it's in
+                if (bookMap.containsKey(key)){
+                    List<Book> list = bookMap.get(key);//list is the shelf it's in
+                    Iterator<Book> it = list.iterator();
+                    while(it.hasNext()){//iterate through values in list
+                        newBook = it.next();
+                        if(newBook.getDewey() == dewey){
+                            bookFound = true;
+                            break;
+                        }//end if
+                    }//end while loop
+                    if(bookFound) {
+                        System.out.println(newBook.toString() + "\n");
+                        break;
+                    } else {
+                        System.out.println("Book not found.");
+                    }
+                } else {
+                    System.out.println("No books in this shelf");
+                }//end if/else
+            } catch(InputMismatchException e){
+                System.out.println("Enter a number");
+                input.next(); // Clear the invalid input
+            }//end try/catch
+        }//end while true
+
+        
+
+    
+    }
+
     public void displayShelf() {
         Scanner input = new Scanner(System.in);
     
@@ -268,6 +326,7 @@ public class Library {
                     break;
                 case 3:
                     //look up book
+                    lookupBook();;
                     break;
                 case 4:
                     //display all books

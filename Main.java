@@ -26,6 +26,7 @@ public class Main {
         //library.removeBook(userBook);
         library.displayLibrary();
         library.writeToFile();
+        library.menu();
 
         //library.displayShelf();
         //methods.lookupBook();
