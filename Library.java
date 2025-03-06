@@ -57,7 +57,7 @@ public class Library {
             //initialize variables to store contact info
             String bookTitle = null;
             String bookAuthor = null;
-            String dewey = null;
+            Double dewey = null;
 
             //read until end of file and get contact info
             while(reader.hasNextLine()) {
@@ -66,44 +66,31 @@ public class Library {
                 if(line.contains(" - ")) { //it's a shelf, don't read, skip
                     
                 } else{
-                    String[] parts = line.split(" by ");
-                    for(String part :parts) {
-                        System.out.println(part);
+                    String[] parts = line.split(" by |\\(|\\)");
+                    int count = 1; //to keep track of line numbers
+                    for(String part : parts) {
+                        if(part == null) { //skip
+
+                        }
+                        else if(count == 1) { //first line - book title
+                            bookTitle = part.trim();
+                            count += 1;
+                        } 
+                        else if(count == 2) { //second line - author
+                            bookAuthor = part.trim();
+                            count += 1;
+                        } 
+                        else if(count == 3) { //third line - number
+                            String data = part.substring(7, part.length());
+                            data = data.trim();
+
+                            Book newBook = new Book(bookTitle, bookAuthor, Double.parseDouble(data));
+                            System.out.println(newBook.toString());
+                            count = 1; //resets to 1
+
+                        } 
                     }
                 }
-                
-                //read book title
-               /* beforeString = "Title: ";
-                line = reader.nextLine();
-                if (line.contains(beforeString)) {
-                    String data = line.substring(line.indexOf(beforeString) + beforeString.length());
-                    bookTitle = data;
-                }//end if statement
-
-                //read book author
-                beforeString = "Author: ";
-                line = reader.nextLine();
-                if (line.contains(beforeString)) {
-                    String data = line.substring(line.indexOf(beforeString) + beforeString.length());
-                    bookAuthor = data;
-                }//end if statement
-
-                //read dewey number
-                beforeString = "Dewey #: ";
-                line = reader.nextLine();
-                if (line.contains(beforeString)) {
-                    String data = line.substring(line.indexOf(beforeString) + beforeString.length());
-                    dewey = data;
-                }//end if statement
-
-                //read empty line
-                if (reader.hasNextLine()) {
-                    line = reader.nextLine();
-                }//end if statement
-                System.out.println(); 
-
-                //create node to add to tree
-                Book newBook = new Book(bookTitle, bookAuthor, Double.parseDouble(dewey)); */
             }//end while loop
             reader.close();
         } catch (FileNotFoundException e) {

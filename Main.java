@@ -18,6 +18,7 @@ public class Main {
         library.addBook(book4);
 
         Scanner input = new Scanner(System.in);
+       //System.out.println("hi");
         //library.writeToFile();
         library.ReadFromFile();
         //library.removeBook(book1);
