@@ -47,7 +47,7 @@ public class Library {
     }//end writeToFile method
     
     //reads contact nodes from the files and adds to tree
-    public void addFromFile() {
+    public void ReadFromFile() {
         try {
             File libraryFile = new File("Library.txt");
             Scanner reader = new Scanner(libraryFile);
@@ -61,9 +61,19 @@ public class Library {
 
             //read until end of file and get contact info
             while(reader.hasNextLine()) {
+
+                line = reader.nextLine();
+                if(line.contains(" - ")) { //it's a shelf, don't read, skip
+                    
+                } else{
+                    String[] parts = line.split(" by ");
+                    for(String part :parts) {
+                        System.out.println(part);
+                    }
+                }
                 
                 //read book title
-                beforeString = "Title: ";
+               /* beforeString = "Title: ";
                 line = reader.nextLine();
                 if (line.contains(beforeString)) {
                     String data = line.substring(line.indexOf(beforeString) + beforeString.length());
@@ -90,10 +100,10 @@ public class Library {
                 if (reader.hasNextLine()) {
                     line = reader.nextLine();
                 }//end if statement
-                System.out.println();
+                System.out.println(); 
 
                 //create node to add to tree
-                Book newBook = new Book(bookTitle, bookAuthor, Double.parseDouble(dewey));
+                Book newBook = new Book(bookTitle, bookAuthor, Double.parseDouble(dewey)); */
             }//end while loop
             reader.close();
         } catch (FileNotFoundException e) {
@@ -342,6 +352,7 @@ public class Library {
                 case 6:
                     //exit
                     System.out.println("Exiting...");
+                    writeToFile();
                     System.exit(0);
                     break;
                 default:

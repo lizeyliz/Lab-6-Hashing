@@ -49,6 +49,6 @@ class Book {
     //toString method
     @Override
     public String toString() {
-        return title + " by " + author + " (Dewey: " + dewey + ")";
+        return title + " by " + author + " - Dewey: " + dewey;
     }
 }//end class Book

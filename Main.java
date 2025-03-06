@@ -3,7 +3,6 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Library library = new Library();
-        SarahMethods methods = new SarahMethods();
 
         Book book5 = new Book("The Odyssey", "Homer", 883.01 );
         Book book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 813.52);
@@ -19,17 +18,20 @@ public class Main {
         library.addBook(book4);
 
         Scanner input = new Scanner(System.in);
+        //library.writeToFile();
+        library.ReadFromFile();
         //library.removeBook(book1);
         //library.userRemoveBook(input);823.
         //remove book
         //Book userBook = library.getUserBook(input);
         //library.removeBook(userBook);
-        library.displayLibrary();
-        library.writeToFile();
-        library.menu();
+        //library.displayLibrary();
+        //
+        //library.menu();
 
         //library.displayShelf();
         //methods.lookupBook();
+        input.close();
     }//end main method
 }//end class Main
 
