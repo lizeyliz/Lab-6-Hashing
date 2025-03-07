@@ -267,11 +267,7 @@ public class Library {
                 input.next(); // Clear the invalid input
             }//end try/catch
         }//end while true
-
-        
-
-    
-    }
+    }//end lookupBook
 
     public void displayShelf() {
         Scanner input = new Scanner(System.in);

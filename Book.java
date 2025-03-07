@@ -6,11 +6,7 @@ class Book {
     //take number off of internet (easier) OR create method to determine
     private double dewey; //dewey decimal number of book;
     private int key; //key for book
-
-    //dewey number
-    // 1)first 3 digits are subject area (shelved in numerical order)
-    // 2) after 3 digits decimal, show the sub-section of the subject area (shelved in numerical order)
-
+    
     //constructor
     public Book(String title, String author, double dewey) {
         this.title = title;
